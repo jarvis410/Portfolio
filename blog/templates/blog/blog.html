@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>Parth Makadiya</title>
+    <title>{{ blog.title }}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
 
@@ -33,7 +33,6 @@
 
     </style>
 </head>
-
 {% load staticfiles %}
 <body>
 <header>
@@ -48,7 +47,7 @@
                 <a class="nav-item nav-link" href="http://twitter.com/makadiap">Twitter</a>
                 <a class="nav-item nav-link" href="#">LinkedIn</a>
                 <a class="nav-item nav-link" href="{% static 'resume.pdf' %}">Resume</a>
-                <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
+                <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
             </div>
         </div>
     </nav>
@@ -56,37 +55,15 @@
 
 <main role="main">
 
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">Hello, I'm Parth</h1>
-            <p class="lead text-muted">I am going to be a Software Engineer. Rolling around last semester. I love to
-            make things work, in every context.</p>
-            <img src="{% static 'me.jpg' %}" alt="" height="300">
-            <p>
-                <a href="mailto:makadiyaparth98@gmail.com" class="btn btn-primary my-2">Mail Me</a>
-            </p>
+    <div class="container">
+        <h1 class="text-center pt-3">{{ blog.title }}</h1>
+        <p class="text-center">{{ blog.pub_date }}</p>
+        <hr />
+        <div class="text-center">
+            <img class="image-fluid rounded" src="{{ blog.image.url }}" width="600" alt="blog image">
         </div>
-    </section>
-
-    <div class="album py-5 bg-light">
-        <div class="container">
-
-            <div class="row">
-
-                {% for job in jobs.all %}
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img class="card-img-top" src="{{ job.image.url }}" />
-                        <div class="card-body">
-                            <p class="card-text">{{ job.summary }}</p>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-
-            </div>
-
-        </div>
+        <br />
+        <p>{{ blog.body }}</p>
     </div>
 
 </main>
